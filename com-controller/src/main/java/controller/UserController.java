@@ -22,12 +22,7 @@ public class UserController {
         return userService.findAll();
 
     }
-    @PostMapping("set")
-    public String set(){
-
-        return "SET";
-
-    }
+    
     @PostMapping("index")
     public String index(){
 
