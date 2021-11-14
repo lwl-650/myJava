@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pojo.User;
+import result.R;
 import service.UserService;
 
 import java.util.List;
@@ -17,9 +18,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("get")
-    public List<User> get(){
+    public R get(){
 
-        return userService.findAll();
+        return R.success(userService.findAll());
 
     }
     
