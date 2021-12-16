@@ -1,4 +1,6 @@
-package result;
+package util.result;
+
+
 
 public class Result<T> extends R {
     private Integer code;

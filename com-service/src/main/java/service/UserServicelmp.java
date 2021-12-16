@@ -13,7 +13,24 @@ public class UserServicelmp implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     *
+     * @return
+     */
     public List<User> findAll() {
         return  userMapper.findAll();
+    }
+
+    /**
+     *
+     * @param uesrname
+     * @param password
+     * @return
+     */
+    public boolean login(String uesrname,String password) {
+        User user=userMapper.login(uesrname);
+      return    user.getPassword().equals(password)? true:false;
+
+//        return true;
     }
 }

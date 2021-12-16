@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.SsqMapper">
+
+
+    <select id="getOneSsq" resultType="pojo.Ssq">
+       select * from ssq order by ssqId desc limit 2;
+--          select * from ssq  limit 1;
+    </select>
+
+    <select id="getRe" resultType="java.lang.Integer">
+        select * from ssq where ssqId = #{ssqId}
+    </select>
+
+   <insert id="setSsq" parameterType="pojo.Ssq">
+       insert into ssq (ssqId,ssqtext)value (#{ssqId},#{ssqtext})
+   </insert>
+
+</mapper>

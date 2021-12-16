@@ -6,5 +6,10 @@
 
     <select id="findAll" resultType="pojo.User">
        select * from user
-   </select>
+    </select>
+
+    <select id="login" resultType="pojo.User">
+        select * from user where name =#{username}
+    </select>
+
 </mapper>
