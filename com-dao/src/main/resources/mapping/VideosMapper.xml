@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.VideosMapper">
+
+    <select id="findViall" resultType="pojo.Videos">
+    select * from videos
+   </select>
+
+    <insert id="addVi" parameterType="pojo.Videos">
+        insert into videos (vtitle,vtext,vurl,vimg) value (#{vtitle},#{vtext},#{vurl},#{vimg})
+    </insert>
+
+    <delete id="delVi" parameterType="java.lang.Integer">
+        delete from videos where vid=#{vid}
+    </delete>
+
+</mapper>
