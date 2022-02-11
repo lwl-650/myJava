@@ -21,4 +21,10 @@ public interface UserService {
      * @return
      */
     boolean login(@Param("username") String uesrname,@Param("password") String password);
+
+    User loginByOpenid(String openid);
+
+    boolean addUser(User user);
+
+    Integer findThis(String openid);
 }

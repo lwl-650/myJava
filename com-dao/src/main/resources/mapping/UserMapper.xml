@@ -12,4 +12,17 @@
         select * from user where name =#{username}
     </select>
 
+    <select id="loginByOpenid" resultType="pojo.User">
+        select * from user where openid =#{openid}
+    </select>
+
+    <select id="findThis" resultType="java.lang.Integer">
+        select * from user where openid =#{openid}
+    </select>
+
+    <insert id="addUser" parameterType="pojo.User">
+        insert into user (name,password,avatar,gender,openid,city)
+        value (#{name},#{password},#{avatar},#{gender},#{openid},#{city})
+    </insert>
+
 </mapper>

@@ -13,4 +13,8 @@ public interface VideosMapper {
     int addVi(Videos videos);
 
     int delVi(int vid);
+
+   Videos findById(int vid);
+
+    Videos findByVid(Integer vid);
 }

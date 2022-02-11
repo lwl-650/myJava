@@ -33,4 +33,16 @@ public class UserServicelmp implements UserService {
 
 //        return true;
     }
+
+    public User loginByOpenid(String openid) {
+        return userMapper.loginByOpenid(openid);
+    }
+
+    public boolean addUser(User user) {
+        return userMapper.addUser(user);
+    }
+
+    public Integer  findThis(String openid) {
+        return userMapper.findThis(openid);
+    }
 }

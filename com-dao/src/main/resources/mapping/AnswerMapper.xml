@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.AnswerMapper">
+
+
+    <select id="findAll" resultType="pojo.Answer">
+        select a.id,a.text,a.toid,a.fid,a.rid,a.an_time,u.name,u.avatar,u.id  from answer a,user u
+        where rid=#{rid} and a.toid=u.id
+    </select>
+
+    <insert id="addAns" keyProperty="id" useGeneratedKeys="true" parameterType="pojo.Answer">
+    insert into answer (text,toid,fid,rid,an_time) value (#{text},#{toid},#{fid},#{rid},#{an_time})
+   </insert>
+
+    <delete id="delAns" parameterType="java.lang.Integer">
+        delete from answer where id=#{id}
+    </delete>
+
+</mapper>

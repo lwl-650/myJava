@@ -11,6 +11,13 @@
 
     <artifactId>com-common</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.parent</groupId>
+            <artifactId>com-pojo</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

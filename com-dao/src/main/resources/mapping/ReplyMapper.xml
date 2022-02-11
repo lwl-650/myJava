@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="dao.ReplyMapper">
+
+
+
+
+    <select id="findAllReply" resultType="pojo.Reply">
+    select r.id,r.videos_id,r.user_id,r.text,r.last_id,r.rtime,u.name,u.avatar
+    from reply r,user u where r.user_id=u.id
+   </select>
+
+    <select id="findReplyByVid" resultType="pojo.Reply">
+    select r.id,r.videos_id,r.user_id,r.text,r.last_id,r.rtime,u.name,u.avatar
+    from reply r,user u where r.videos_id=#{vid} and r.user_id=u.id order by r.id desc limit 0,5
+
+   </select>
+
+    <select id="findByIdPage" resultType="pojo.Reply">
+    select r.id,r.videos_id,r.user_id,r.text,r.last_id,r.rtime,u.name,u.avatar
+    from reply r,user u where r.videos_id=#{vid} and r.user_id=u.id order by r.id desc
+    limit #{pages},#{num}
+
+   </select>
+
+    <insert id="addReply" keyProperty="id" useGeneratedKeys="true" parameterType="pojo.Reply">
+    insert into reply (videos_id,user_id,text,last_id,rtime) value (#{videos_id},#{user_id},#{text},#{last_id},#{rtime})
+   </insert>
+
+    <delete id="delReply" parameterType="java.lang.Integer">
+        delete from reply where id=#{id}
+    </delete>
+
+
+</mapper>

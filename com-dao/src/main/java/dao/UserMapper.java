@@ -22,4 +22,10 @@ public interface UserMapper {
      * @return
      */
     User login(@Param("username") String uesrname);
+
+    User loginByOpenid(String openid);
+
+    boolean addUser(User user);
+
+    Integer findThis(String openid);
 }

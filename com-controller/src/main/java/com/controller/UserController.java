@@ -13,6 +13,10 @@ import service.UserService;
 import util.result.R;
 import util.redisUtil.RedisUtil;
 
+import javax.servlet.ServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 public class UserController {
@@ -39,6 +43,7 @@ public class UserController {
                 R.personalizado(-1,"登录失败",false);
     }
 
+
     /**
      *
      * @return
@@ -60,4 +65,19 @@ public class UserController {
         return "index";
 
     }
+
+    @PostMapping("prot")
+    public R test(ServletRequest request){
+//        System.out.println(request.getLocalAddr());
+//        System.out.println(request.getLocalPort());
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (request.getLocalPort()==9002){
+            map.put("prot",request.getLocalPort());
+        }else{
+            map.put("prot","其他");
+        }
+
+        return R.success(map);
+    }
+
 }

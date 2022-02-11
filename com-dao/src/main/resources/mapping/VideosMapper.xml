@@ -3,9 +3,36 @@
 
 <mapper namespace="dao.VideosMapper">
 
+    <resultMap type="pojo.Videos" id="categoryBean">
+        <id column="vid" property="vid" />
+        <result column="vtitle" property="vtitle" />
+        <result column="vtext" property="vtext" />
+        <result column="vurl" property="vurl" />
+        <result column="vimg" property="vimg" />
+        <!-- 一对多的关系 -->
+        <!-- property: 指的是集合属性的值, ofType：指的是集合中元素的类型 -->
+        <collection property="replies" ofType="pojo.Reply">
+            <id column="id" property="id" />
+            <result column="videos_id" property="videos_id" />
+            <result column="user_id" property="user_id" />
+            <result column="text" property="text" />
+            <result column="last_id" property="last_id" />
+        </collection>
+    </resultMap>
+
+    <select id="findById" resultMap="categoryBean">
+        select v.vid,v.vtitle,v.vtext,v.vurl,v.vimg,r.id,r.videos_id,r.user_id,r.text,r.last_id
+        from videos v left join reply r on v.vid=r.videos_id where v.vid=#{vid}
+    </select>
+
+    <select id="findByVid" resultType="pojo.Videos">
+        select * from videos where videos.vid=#{vid}
+    </select>
+
     <select id="findViall" resultType="pojo.Videos">
-    select * from videos
+      select * from videos
    </select>
+
 
     <insert id="addVi" parameterType="pojo.Videos">
         insert into videos (vtitle,vtext,vurl,vimg) value (#{vtitle},#{vtext},#{vurl},#{vimg})
@@ -14,5 +41,7 @@
     <delete id="delVi" parameterType="java.lang.Integer">
         delete from videos where vid=#{vid}
     </delete>
+
+
 
 </mapper>

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication(scanBasePackages = {"dao","com.controller","service","aop","util"})
+@SpringBootApplication(scanBasePackages = {"dao","com.controller","service","aop","util","config"})
 @MapperScan("dao")
 @EnableScheduling
 public class ComApplication {
